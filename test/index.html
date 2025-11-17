@@ -1,0 +1,44 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>consumindo api</title>
+    
+    <script>
+        async function Somar(){
+            let n1 = document.getElementById('txtnum1').value;
+            let n2 = document.getElementById('txtnum2').value;
+
+            let url = 'http://localhost:5001/calculadora/somar/' + n1 + '/' + n2;
+
+            let response = await fetch(url)
+
+
+            let dados = await response.json()
+            
+            document.getElementById('res').innerText =  (dados.soma);
+        }
+    </script>
+</head>
+<body>
+    <h1>PROGRAMA DA SOMA</h1>
+
+    <div class="form">
+        <div>
+            <label >Numero 01:</label>
+            <input type="text" id="txtnum1">
+        </div>
+        <div>
+            <label>Numero 02:</label>
+            <input type="text" id="txtnum2">
+        </div>
+        <div class="btn">
+            <label ></label>
+            <button onclick="Somar()">Somar</button>
+        </div>
+        <div id="res">
+            0
+        </div>
+    </div>
+</body>
+</html>
